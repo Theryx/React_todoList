@@ -5,14 +5,20 @@ import Form from "./components/Form";
 import TodoList from "./components/TodoList";
 
 function App() {
-  const [inputText, setImputText];
+  const [inputText, setImputText] = useState("");
+  const [todos, setTodos] = useState([]);
   return (
     <div className="App">
       <header>
         <h1> Theryx Todo List</h1>
       </header>
-      <Form />
-      <TodoList />
+      <Form
+        inputText={inputText}
+        todos={todos}
+        setTodos={setTodos}
+        setImputText={setImputText}
+      />
+      <TodoList inputText={inputText} />
     </div>
   );
 }
