@@ -1,7 +1,6 @@
-const Form = ({ setImputText, todos, setTodos, inputText }) => {
+const Form = ({ setImputText, todos, setTodos, inputText, setStatus }) => {
   //Here I can write what ever function
   const inputTextHandler = (e) => {
-    console.log(e.target.value);
     setImputText(e.target.value);
   };
   const submitTodoHendler = (e) => {
@@ -11,6 +10,9 @@ const Form = ({ setImputText, todos, setTodos, inputText }) => {
       { text: inputText, completed: false, id: Math.random() * 1000 },
     ]);
     setImputText("");
+  };
+  const statusHandler = (e) => {
+    setStatus(e.target.value);
   };
   return (
     <form>
@@ -24,7 +26,7 @@ const Form = ({ setImputText, todos, setTodos, inputText }) => {
         <i class="fas fa-plus-square"></i>
       </button>
       <div class="select">
-        <select name="todos" class="filter-todo">
+        <select onChange={statusHandler} name="todos" class="filter-todo">
           <option value="all">All</option>
           <option value="completed">Completed</option>
           <option value="uncompleted">Uncompleted</option>
